@@ -1,0 +1,8 @@
+.invisible {
+	display: none;
+}
+
+#searchBar {
+	width: 100%;
+	max-width: 300px;
+}
