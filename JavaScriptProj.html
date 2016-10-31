@@ -5,26 +5,34 @@
     <link type="text/css" rel="stylesheet" href="stylesheets/style.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-<body>
-    <div class="navbar-fixed">
-    <nav>
+<body onload="handleAuthClick(event)">
+    <div class="banner brand-logo center">
+        <img src="images/nwlitcenter.png" class="litcenterlogo"/>
+    </div>
+    <ul id="dropdown" class="dropdown-content">
+      <li><a class="white-text" href="#" onclick="initializeGraphs()">Charts</a></li>
+      <li><a class="white-text" href="#!" onclick="initializeTables()">Tables</a></li>
+    </ul>
+    <nav style="background-color:#000000">
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo center">Lit Center</a>
+        <a href="#!"class="brand-logo center"></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="#" onclick="initializeGraphs()">Graphs</a></li>
+          <li><a href="#" onclick="initializeHome()">Home</a></li>
           <li><a href="#" onclick="initializeSearch()">Search</a></li>
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown" data-hover="true" data-beloworigin="true">Stats<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
       </div>
     </nav>
-  </div>
-    <div id="authorize-div">
-        <span>Authorize access to Google Sheets API</span>
-        <!--Button for the user to click to initiate auth sequence -->
-        <div class="btn waves-effect" id="authorize-button" onclick="handleAuthClick(event)">Authorize</div>
+    <div id="homeImage" class="center-align">
+        <img id="backgroundImage" src="./images/background.jpg"></img>
     </div>
-    <div id="container"></div>
-    <pre id="output"></pre>
-    <div id="graph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>    
+    <div id="container">
+        <div id="searchContainer" class="invisible row center-align">
+            <input id="searchBar" type="text" placeholder="student id" class="center-align"/>
+            <div class="btn waves-effect" onclick="searchById()" class="center-align">Search</div>
+        </div>
+        <div id="graph" class="invisible" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    </div>
 </body>
 <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -34,4 +42,9 @@
 <script type="text/javascript" src="javascripts/litCenterAPI.js"></script>
 <script type="text/javascript" src="javascripts/graphs.js"></script>
 <script type="text/javascript" src="javascripts/search.js"></script>
+<script type="text/javascript" src="javascripts/tables.js"></script>
+<script type="text/javascript" src="javascripts/home.js"></script>
+<script>
+    $(".dropdown-button").dropdown();
+</script>
 </html>

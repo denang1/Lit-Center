@@ -1,3 +1,7 @@
+#backgroundImage {
+	height: 100vh;
+}
+
 .invisible {
 	display: none;
 }
@@ -5,4 +9,46 @@
 #searchBar {
 	width: 100%;
 	max-width: 300px;
+}
+
+.litcenterlogo {
+	height: 100px;
+}
+
+.banner {
+	width: 100%;
+	height: 100px;
+	background-color: #e41b21;
+}
+
+.dropdown-content {
+	background-color: red;
+}
+
+/* Table Style */
+tr {
+	border: thin solid;
+}
+
+td, th {
+	overflow-x: auto;
+	overflow-y: visible;
+}
+
+table {
+	table-layout: fixed;
+}
+
+tr:nth-child(even) {
+	background-color: #F1F1F1;
+}
+
+#headingTable {
+	background-color: #A8A8A8;
+}
+
+#tableScroll {
+	overflow-y: scroll;
+	position: relative;
+	-webkit-overflow-scrolling: touch;
 }

@@ -1,19 +1,21 @@
 function initializeGraphs() {
-	hideSearch();
+	clearDisplayForGraphs();
 	loadData().then(function(response) {
         var results = [];
         response.result.values.map(function(row){
             results.push(row);
         });
         displayGraphs(results);
-    }, function(response) {
-        appendPre('Error: ' + response.result.error.message);
+    }, function (error) {
+        alert(error.result.error.message);
     });
 }
 
-function hideSearch() {
+function clearDisplayForGraphs() {
+	$('#homeImage').addClass('invisible');
 	$('#searchContainer').addClass("invisible");
 	$('#graph').removeClass("invisible");
+	$('#litCenterData').remove();
 }
 
 function displayGraphs(data) {
@@ -46,12 +48,9 @@ function displayGraphs(data) {
             }
         },
         tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
+           formatter: function () {
+                return '<b>Period ' + this.x + '</b>: ' + this.y;
+            }
         },
         plotOptions: {
             column: {
